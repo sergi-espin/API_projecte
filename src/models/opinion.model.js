@@ -29,7 +29,7 @@ Opinion.findById = function (id, result) {
 	});
 };
 Opinion.findAll = function (result) {
-	dbConn.query("Select * from opiniones", function (err, res) {
+	dbConn.query("SELECT u.id AS usuario_id, u.nombre AS nombre_usuario, u.correo AS correo_usuario, o.nota, o.opinion, o.compraVerificada FROM usuarios u JOIN opiniones o ON u.id = o.usuario_id;", function (err, res) {
 		if (err) {
 			console.log("error: ", err);
 			result(null, err);

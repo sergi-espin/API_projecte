@@ -5,6 +5,7 @@ var Usuario = function (usuario) {
 	this.nombre = usuario.nombre;
 	this.correo = usuario.correo;
 	this.telefono = usuario.telefono;
+	this.contraseña = usuario.contraseña;
 };
 Usuario.create = function (newPro, result) {
 	dbConn.query("INSERT INTO usuarios set ?", newPro, function (err, res) {
@@ -40,8 +41,8 @@ Usuario.findAll = function (result) {
 };
 Usuario.update = function (id, usuario, result) {
 	dbConn.query(
-		"UPDATE usuarios SET nombre=?,correo=?,telefono=? WHERE id = ?",
-		[usuario.nombre, usuario.correo, usuario.telefono, id],
+		"UPDATE usuarios SET nombre=?,correo=?,telefono=?,contraseña=? WHERE id = ?",
+		[usuario.nombre, usuario.correo, usuario.telefono, usuario.contraseña, id],
 		function (err, res) {
 			if (err) {
 				console.log("error: ", err);
